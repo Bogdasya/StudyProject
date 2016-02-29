@@ -1,1 +1,60 @@
-<h1>Hello </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2 col-md-2">
+      <img src="http://thetransformedmale.files.wordpress.com/2011/06/bruce-wayne-armani.jpg"
+           alt="" class="img-rounded img-responsive" />
+    </div>
+    <div class="col-sm-4 col-md-4">
+      <blockquote>
+        <p><%= full_name(current_user) %></p> <small hidden="true"><cite title="Source Title">Gotham, United Kingdom  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+      </blockquote>
+      <p> <i class="glyphicon glyphicon-envelope"></i> <%= current_user.email %>
+        <br />
+	      <% if current_user.birthday.present? %>
+          <i class="glyphicon glyphicon-gift"></i> <%= DateTime.strptime(current_user.birthday, '%m/%d/%Y').strftime("%d %B %Y") %></p>
+		    <% end %>
+    </div>
+  </div>
+	</br>
+  <button type="button" class="btn btn-primary btn-lg btn3d" data-toggle="modal" data-target="#myModal">Update user's info</button>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">User profile update page</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for current_user do |f| %>
+          <div class="form-group">
+            <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name', required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name', required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :birthday, class: 'form-control', id: 'datepicker', placeholder: 'Birthday', required: true %>
+          </div>
+          <%= f.submit "Update User", id: 'login-submit', class: 'form-control btn btn-login' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	$(function(){
+		$('#datepicker').datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: '1900:2013'
+		});
+		$('#datepicker').datepicker('option', 'dateFormat', 'yy-mm-dd');
+	});
+</script>

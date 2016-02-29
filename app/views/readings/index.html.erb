@@ -7,13 +7,12 @@
   <% end %>
   </div>
   <div class="row grid-divider">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <h3>Javascript</h3>
       <div class="table-responsive">
         <table class="table">
           <thead>
           <tr>
-            <th>#</th>
             <th>Author</th>
             <th>link</th>
           </tr>
@@ -22,13 +21,12 @@
         </table>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <h3>Databases</h3>
       <div class="table-responsive">
         <table class="table">
           <thead>
           <tr>
-            <th>#</th>
             <th>Author</th>
             <th>link</th>
           </tr>
@@ -37,18 +35,31 @@
         </table>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <h3>IT</h3>
       <div class="table-responsive">
         <table class="table">
           <thead>
           <tr>
-            <th>#</th>
             <th>Author</th>
             <th>link</th>
           </tr>
           </thead>
             <%= render 'readings/layouts/databases', data: @reading.it %>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <h3>English</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Author</th>
+            <th>link</th>
+          </tr>
+          </thead>
+          <%= render 'readings/layouts/english_reading', data: @reading.english %>
         </table>
       </div>
     </div>
@@ -74,7 +85,7 @@
               <%= f.text_field :content, class: 'form-control', placeholder: 'Content', required: true %>
             </div>
             <div class="form-group">
-              <%= f.select(:theme, ['Javascript', 'IT', 'Databases'], {}, class: 'form-control') %>
+              <%= f.select(:theme, ['Javascript', 'IT', 'Databases', 'English'], {}, class: 'form-control') %>
             </div>
             <%= f.submit "Add Book", id: 'login-submit', class: 'form-control btn btn-login' %>
 	        <% end %>

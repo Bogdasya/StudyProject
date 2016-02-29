@@ -11,6 +11,7 @@ class ReadingsController < ApplicationController
     end
   end
 
+  private
   def readings_params
     params.require(:reading).permit(:author, :content, :theme)
   end
