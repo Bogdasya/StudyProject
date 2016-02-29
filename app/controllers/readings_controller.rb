@@ -7,6 +7,7 @@ class ReadingsController < ApplicationController
   def create
     reading = Reading.new(readings_params)
     if reading.save
+      flash[:notice] = "Book create successfully"
       redirect_to :back
     end
   end
